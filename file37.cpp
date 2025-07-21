@@ -1,5 +1,5 @@
 
-// Calculate nCr binomial coefficient for n & r
+// WAP to check if a number is prime or not
 #include<iostream>
 using namespace std;
 
