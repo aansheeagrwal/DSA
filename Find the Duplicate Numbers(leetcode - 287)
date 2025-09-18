@@ -1,0 +1,40 @@
+// This is the basic code that runs in this we use orederd set but according to the question condintion space complexity O(1) but this code compleity O(N). so we can't use this solution.
+
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        unordered_set<int> s;
+
+        for(int val : nums) {
+            if(s.find(val) != s.end()){
+                return val;
+            }
+            s.insert(val);
+        }
+        return -1;
+        
+    }
+}; 
+
+// this is the final code in this we use slow fast pointer approach using linked list.
+// The TC - O(N)
+// The SC - O(1)
+class Solution {
+public:
+    int findDuplicate(vector<int>& arr) {
+        int slow = arr[0], fast = arr[0];
+
+        do{
+            slow = arr[slow]; //+1
+            fast = arr[arr[fast]]; //+2
+        } while(slow != fast);
+
+        slow = arr[0];
+
+        while(slow != fast) {
+            slow = arr[slow]; //+1
+            fast = arr[fast]; //+1
+        }
+        return slow;
+    }
+};
